@@ -6,3 +6,5 @@
 <link href="{{asset("css/fixedHeader.bootstrap.min.css")}}" rel="stylesheet">
 <link href="{{asset("css/responsive.bootstrap.min.css")}}" rel="stylesheet">
 <link href="{{asset("css/scroller.bootstrap.min.css")}}" rel="stylesheet">
+<link href="{{asset("js/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css")}}" rel="stylesheet">
+    

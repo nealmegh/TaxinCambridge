@@ -10,4 +10,9 @@ class Car extends Model
         'name', 'size', 'luggage', 'fair', 'description', 'status'
     ];
 
+    public function bookings()
+    {
+        return $this->hasMany('App\Booking');
+    }
+
 }

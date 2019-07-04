@@ -1,114 +1,145 @@
 @extends('Backend.layout')
+@section('css')
+    @include('Backend.Car.Associate.css');
+@append
 
 @section('content')
-        <div class="">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>Users <small>Some examples to get you started</small></h3>
-                </div>
+    <div class="">
+        <div class="page-title">
 
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                        </div>
+
+            <div class="title_right">
+{{--{{dd($errors->first())}}--}}
+                {{--@if($errors->any())--}}
+                    {{--<h4>{{$errors->first()}}</h4>--}}
+                {{--@endif--}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Default Example <small>Users</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <p class="text-muted font-13 m-b-30">
-                                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-                            </p>
-                            <table id="datatable" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Cedric Kelly</td>
-                                    <td>Senior Javascript Developer</td>
-                                    <td>Edinburgh</td>
-                                    <td>22</td>
-                                    <td>2012/03/29</td>
-                                    <td>$433,060</td>
-                                </tr>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>33</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
+                @endif
             </div>
         </div>
 
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Basic Model <small>Bookings</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            <li><a title="Create a Booking" href="{{route('booking.create')}}" class="btn btn-app">
+                                    <i class="fa fa-user"></i> <span>Create </span>
+                                </a>
+                                {{--<a class="close-link"><i class="fa fa-close"></i></a>--}}
+                            </li>
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        {{--<p class="text-muted font-13 m-b-30">--}}
+                            {{--DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>--}}
+                        {{--</p>--}}
+                        <table id="datatable1" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Customer Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Price</th>
+                                <th>Driver</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+                            @foreach($bookings as $booking)
+                            <tr>
+                                <td>{{$booking->id}}</td>
+                                @if($booking->user != null)
+                                <td>{{$booking->user->name}}</td>
+                                <td>{{$booking->user->email}}</td>
+                                <td>{{$booking->user->phone}}</td>
+                                @else
+                                    <td>{{'Customer Data is Not Available'}}</td>
+                                    <td>{{'Customer Data is Not Available'}}</td>
+                                    <td>{{'Customer Data is Not Available'}}</td>
+                                @endif
+                                @if($booking->final_price == null)
+                                    <td>{{$booking->price}}</td>
+                                @else
+                                    <td>{{$booking->final_price}}</td>
+                                @endif
+
+                                @if($booking->driver == null)
+                                    <td>
+                                        <a href="{{route('booking.assign', $booking->id)}}" data-toggle="modal" class="btn btn-sm btn-info editFunction" data-row-id="37">
+                                        Assign</a>
+                                    </td>
+                                @else
+                                <td>{{$booking->driver->name}}</td>
+                                @endif
+                                @if($booking->user_transaction_id == null)
+                                    <td>
+                                        <a href="{{route('booking.payment', $booking->id)}}" data-toggle="modal" class="btn btn-sm btn-info editFunction" data-row-id="37">
+                                            Payment Confirmation</a>
+                                    </td>
+                                @else
+                                    <td>{{$booking->userTransaction->payment_id}}</td>
+                                @endif
+
+                                    @if($booking->complete_status == Null)
+                                    <td> <a href="{{route('booking.complete', $booking->id)}}" data-toggle="modal" class="btn btn-sm btn-info editFunction" data-row-id="37">
+                                            Job Completion</a> </td>
+                                    @else
+                                    <td>{{'Completed'}}</td>
+                                    @endif
+
+                                <td>
+                                    {{--<a href="{{route('cars.show', $user->id)}}" data-toggle="modal"  class="btn btn-sm btn-success viewFunction">--}}
+                                        {{--<i class="fa fa-eye"></i>--}}
+                                    {{--</a> ||--}}
+                                    <a  href="{{route('booking.edit', $booking->id)}}" data-toggle="modal" class="btn btn-sm btn-warning editFunction" data-row-id="37">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    ||
+
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('booking.delete', $booking->id)}}" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 @endsection
+
+@section('js')
+    @include('Backend.Car.Associate.js');
+    <script>
+        $(document).ready(function() {
+            $('#datatable1').DataTable( {
+                "aaSorting": [[ 0, "desc" ]]
+            } );
+        } );
+    </script>
+@append

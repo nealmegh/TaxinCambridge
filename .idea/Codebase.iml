@@ -84,5 +84,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="humam" />
+    <orderEntry type="module" module-name="phdclub" />
+    <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" name="respond" level="application" />
+    <orderEntry type="library" name="tp.widget.bootstrap" level="application" />
   </component>
 </module>

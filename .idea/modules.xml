@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Codebase.iml" filepath="$PROJECT_DIR$/.idea/Codebase.iml" />
       <module fileurl="file://D:/xampp/htdocs/humam/.idea/humam.iml" filepath="D:/xampp/htdocs/humam/.idea/humam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Shuaib Project/phdclub/.idea/phdclub.iml" filepath="$PROJECT_DIR$/../../Shuaib Project/phdclub/.idea/phdclub.iml" />
     </modules>
   </component>
 </project>

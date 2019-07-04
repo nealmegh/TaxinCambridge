@@ -25,7 +25,11 @@ class HomeController extends Controller
     public function index()
     {
 //        $user = Auth::user();
-//        die($user->hasRole('admin'));
+////        dd($user->hasRole('customer'));
+//        if($user->hasRole('customer') || $user->hasRole('driver'))
+//        {
+//            return redirect('/');
+//        }
         return view('home');
     }
 }

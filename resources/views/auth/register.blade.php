@@ -38,7 +38,20 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="phone" value="" required>
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                                <input id="role" type="hidden" name="role" value="3" >
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

@@ -82,7 +82,7 @@
                                         <i class="fa fa-pencil"></i>
                                     </a> ||
 
-                                    <a href="{{route('cars.delete', $car->id)}}" class="btn btn-sm btn-danger">
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('cars.delete', $car->id)}}" class="btn btn-sm btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

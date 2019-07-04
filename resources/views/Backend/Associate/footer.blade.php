@@ -1,6 +1,6 @@
 <footer>
     <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        Taxi in Cambridge made by <a href="https://bluwebz.com">Bluwebz</a>
     </div>
     <div class="clearfix"></div>
 </footer>

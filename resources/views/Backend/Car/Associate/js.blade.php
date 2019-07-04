@@ -13,4 +13,6 @@
 <script src="{{asset("js/szip.min.js")}}j"></script>
 <script src="{{asset("js/pdfmake.min.js")}}"></script>
 <script src="{{asset("js/vfs_fonts.js")}}"></script>
+<script src="{{asset("js/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js")}}"></script>
+
 

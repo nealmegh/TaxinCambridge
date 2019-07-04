@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -28,8 +32,12 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo;
 
+//    protected function redirectTo()
+//    {
+//        return redirect()->back();
+//    }
     /**
      * Create a new controller instance.
      *
@@ -37,7 +45,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+//        $this->middleware('guest');
     }
 
     /**
@@ -48,10 +56,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+//        dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'phone' => ['required', 'string'],
+            'role' => ['required']
         ]);
     }
 
@@ -63,10 +74,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
         ]);
+        $newUser->attachRole($data['role']);
+        if(app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'booking.create')
+
+        {
+            return $newUser;
+        }
+//        Auth::login($newUser);
+        return $newUser;
+    }
+    protected function registered(Request $request, $user)
+    {
+        return redirect()->intended($this->redirectPath());
+    }
+
+    public function createByAdmin(array $data)
+    {
+//
+        $validate = $this->validator($data)->validate();
+        $call = $this->create($data);
+        return $call;
     }
 }
