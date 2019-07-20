@@ -98,7 +98,7 @@
                                                 <a title="Download PDF" class="btn btn-info" onclick="return confirm('Are you sure?')" href="{{route('bill.email', $bill->id)}}" class="btn btn-sm btn-success">
                                                     <i class="fa fa-download"></i>
                                                 </a>
-                                                <!--@endif-->
+                                                {{--<!--@endif-->--}}
                                                 @if($bill->status == 0)
                                                     ||
                                                     <a title="Collect Bill" class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('bill.collect', $bill->id)}}" class="btn btn-sm btn-success">

@@ -1,5 +1,5 @@
 <?php
-
+use App\Booking;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +48,10 @@ Route::group( ['middleware' => 'auth' ], function()
 
 
 //Route::get('/check', function () {
-//    return view('Backend.Booking.index');
+//
+//    $booking = Booking::find(6);
+//    $data['booking'] = $booking;
+//    return view('Email.bookingSuccessful', compact('data'));
 //});
 
 Auth::routes();

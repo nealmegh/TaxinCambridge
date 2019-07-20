@@ -139,7 +139,7 @@
                                     <td
                                             style="font-family: sans-serif; font-size: 30px; vertical-align: top;width:20%"
                                     >
-                                        <img alt="Logo" src="email/logo.png" />
+                                        <img alt="Logo"  src="{{asset("images/logo.png")}}" />
                                     </td>
                                 </tr>
                                 <tr>

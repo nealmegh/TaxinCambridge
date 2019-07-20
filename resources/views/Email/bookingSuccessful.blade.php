@@ -139,7 +139,7 @@
                                     <td
                                             style="font-family: sans-serif; font-size: 30px; vertical-align: top;width:20%"
                                     >
-                                        <img alt="Logo" src="email/logo.png" />
+                                        <img alt="Logo"  src="{{asset("images/logo.png")}}"  />
                                     </td>
                                 </tr>
                                 <tr>
@@ -192,13 +192,13 @@
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Passenger</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    Abrar
+                                                    {{$data['booking']->user->name}}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Passenger Phone</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    1672228955
+                                                    {{$data['booking']->user->phone}}
                                                 </td>
                                             </tr>
                                         </table>
@@ -218,19 +218,24 @@
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Pickup</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    p (Cambridge (CB1, CB2, CB3, CB4))
+                                                    {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->location->display_name.')'}}
+
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Destination</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    d (Stansted Airport)
+                                                    {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->airport->display_name.')'}}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Return</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    Yes
+                                                    @if($data['booking']->return == 1)
+                                                        <p style="margin:0">Yes</p>
+                                                    @else
+                                                        <p style="margin:0">No</p>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </table>
@@ -250,19 +255,20 @@
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Pick Up Date</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    08-04-2019
+                                                    {{date('d-m-Y',strtotime($data['booking']->journey_date))}}
+
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Pick Up Time</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    time value
+                                                    {{$data['booking']->pickup_time}}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Vehicle</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    Vehicle value
+                                                    {{$data['booking']->car->name}} {{$data['booking']->car->description}}
                                                 </td>
                                             </tr>
                                         </table>
@@ -282,25 +288,25 @@
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Number of Adult</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    10
+                                                    {{$data['booking']->adult}}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Number of Child</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    5
+                                                    {{$data['booking']->child}}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="width:30%;padding:5px 0;"></td>
+                                                <td style="width:30%;padding:5px 0;">Number of Luggage</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    111
+                                                    {{$data['booking']->luggage}}
                                                 </td>
                                             </tr>
                                             <tr>
                                             <td style="width:30%;padding:5px 0;">Number of CarryOn</td>
                                             <td style="width:70%;padding:5px 0;">
-                                                333
+                                                {{$data['booking']->carryon}}
                                             </td>
                                             </tr>
                                         </table>
@@ -321,93 +327,93 @@
                                             <tr>
                                                 <td style="width:30%;padding:15px 0;"><span style="font-weight:bold">Total</span></td>
                                                 <td style="width:70%;padding:15px 0;">
-                                                    <span style="font-weight:bold">£ 305</span>
+                                                    <span style="font-weight:bold">£ {{$data['booking']->price}}</span>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
 
-                                <tr class="old-markup">
-                                    <td colspan="2">
-                                        <table style="width:100%">
-                                            <tr>
-                                                <td style="width:30%;padding:15px 0;">
-                                                    Booking Reference
-                                                </td>
-                                                <td style="width:70%;padding:15px 0;">
-                                                    {{$data['booking']->id}}
-                                                </td>
+                                {{--<tr class="old-markup">--}}
+                                    {{--<td colspan="2">--}}
+                                        {{--<table style="width:100%">--}}
+                                            {{--<tr>--}}
+                                                {{--<td style="width:30%;padding:15px 0;">--}}
+                                                    {{--Booking Reference--}}
+                                                {{--</td>--}}
+                                                {{--<td style="width:70%;padding:15px 0;">--}}
+                                                    {{--{{$data['booking']->id}}--}}
+                                                {{--</td>--}}
 
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                        colspan="2"
-                                                        style="border-bottom:1px solid #ccc"
-                                                ></td>
-                                            </tr>
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td--}}
+                                                        {{--colspan="2"--}}
+                                                        {{--style="border-bottom:1px solid #ccc"--}}
+                                                {{--></td>--}}
+                                            {{--</tr>--}}
 
-                                            <tr>
-                                                <td style="width:30%;padding:15px 0;">
-                                                    <p style="margin:0">Passenger</p>
-                                                    <p style="margin:0">Passenger Phone</p>
-                                                </td>
-                                                <td style="width:70%;padding:15px 0;">
-                                                    <p style="margin:0">{{$data['booking']->user->name}}</p>
-                                                    <p style="margin:0">{{$data['booking']->user->phone}}</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                        colspan="2"
-                                                        style="border-bottom:1px solid #ccc"
-                                                ></td>
-                                            </tr>
-                                                @if($data['booking']->from_to == 'loc')
-                                                <tr>
-                                                    <td style="width:30%;padding:15px 0;">
-                                                        <p style="margin:0">Pickup</p>
-                                                        <p style="margin:0">Destination</p>
-                                                        <p style="margin:0">Return</p>
-                                                    </td>
-                                                    <td style="width:70%;padding:15px 0;">
-                                                        <p style="margin:0">
-                                                         {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->location->display_name.')'}}
-                                                        </p>
-                                                        <p style="margin:0">
-                                                            {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->airport->display_name.')'}}
-                                                        </p>
-                                                        @if($data['booking']->return == 1)
-                                                            <p style="margin:0">Yes</p>
-                                                        @else
-                                                            <p style="margin:0">No</p>
-                                                        @endif
+                                            {{--<tr>--}}
+                                                {{--<td style="width:30%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">Passenger</p>--}}
+                                                    {{--<p style="margin:0">Passenger Phone</p>--}}
+                                                {{--</td>--}}
+                                                {{--<td style="width:70%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">{{$data['booking']->user->name}}</p>--}}
+                                                    {{--<p style="margin:0">{{$data['booking']->user->phone}}</p>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td--}}
+                                                        {{--colspan="2"--}}
+                                                        {{--style="border-bottom:1px solid #ccc"--}}
+                                                {{--></td>--}}
+                                            {{--</tr>--}}
+                                                {{--@if($data['booking']->from_to == 'loc')--}}
+                                                {{--<tr>--}}
+                                                    {{--<td style="width:30%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">Pickup</p>--}}
+                                                        {{--<p style="margin:0">Destination</p>--}}
+                                                        {{--<p style="margin:0">Return</p>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td style="width:70%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">--}}
+                                                         {{--{{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->location->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--<p style="margin:0">--}}
+                                                            {{--{{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->airport->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--@if($data['booking']->return == 1)--}}
+                                                            {{--<p style="margin:0">Yes</p>--}}
+                                                        {{--@else--}}
+                                                            {{--<p style="margin:0">No</p>--}}
+                                                        {{--@endif--}}
 
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td style="width:30%;padding:15px 0;">
-                                                        <p style="margin:0">Pickup</p>
-                                                        <p style="margin:0">Destination</p>
-                                                        <p style="margin:0">Return</p>
-                                                    </td>
-                                                    <td style="width:70%;padding:15px 0;">
-                                                        <p style="margin:0">
-                                                            {{$data['booking']->pickup_address.' '}}  {{ '('.$data['booking']->airport->display_name.')'}}
-                                                        </p>
-                                                        <p style="margin:0">
-                                                            {{$data['booking']->dropoff_address.' '}}  {{'('.$data['booking']->location->display_name.')'}}
-                                                        </p>
-                                                        @if($data['booking']->return == 1)
-                                                            <p style="margin:0">Yes</p>
-                                                        @else
-                                                            <p style="margin:0">No</p>
-                                                        @endif
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@else--}}
+                                                {{--<tr>--}}
+                                                    {{--<td style="width:30%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">Pickup</p>--}}
+                                                        {{--<p style="margin:0">Destination</p>--}}
+                                                        {{--<p style="margin:0">Return</p>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td style="width:70%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">--}}
+                                                            {{--{{$data['booking']->pickup_address.' '}}  {{ '('.$data['booking']->airport->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--<p style="margin:0">--}}
+                                                            {{--{{$data['booking']->dropoff_address.' '}}  {{'('.$data['booking']->location->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--@if($data['booking']->return == 1)--}}
+                                                            {{--<p style="margin:0">Yes</p>--}}
+                                                        {{--@else--}}
+                                                            {{--<p style="margin:0">No</p>--}}
+                                                        {{--@endif--}}
 
-                                                    </td>
-                                                </tr>
-                                            @endif
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endif--}}
 
                                             {{--<tr>--}}
                                             {{--<td--}}
@@ -425,79 +431,79 @@
                                             {{--<p style="margin:0">BMW</p>--}}
                                             {{--</td>--}}
                                             {{--</tr>--}}
-                                            <tr>
-                                                <td
-                                                        colspan="2"
-                                                        style="border-bottom:1px solid #ccc"
-                                                ></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width:30%;padding:15px 0;">
-                                                    <p style="margin:0">Pick Up Date</p>
-                                                    <p style="margin:0">Pick Up Time</p>
-                                                    <p style="margin:0;color:#fff">Blank</p>
-                                                    <p style="margin:0;">Vehicle</p>
-                                                </td>
-                                                <td style="width:70%;padding:15px 0;">
-                                                    <p style="margin:0">{{date('d-m-Y',strtotime($data['booking']->journey_date))}}</p>
-                                                    <p style="margin:0">
-                                                        {{$data['booking']->pickup_time}}
-                                                    </p>
+                                            {{--<tr>--}}
+                                                {{--<td--}}
+                                                        {{--colspan="2"--}}
+                                                        {{--style="border-bottom:1px solid #ccc"--}}
+                                                {{--></td>--}}
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td style="width:30%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">Pick Up Date</p>--}}
+                                                    {{--<p style="margin:0">Pick Up Time</p>--}}
+                                                    {{--<p style="margin:0;color:#fff">Blank</p>--}}
+                                                    {{--<p style="margin:0;">Vehicle</p>--}}
+                                                {{--</td>--}}
+                                                {{--<td style="width:70%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">{{date('d-m-Y',strtotime($data['booking']->journey_date))}}</p>--}}
+                                                    {{--<p style="margin:0">--}}
+                                                        {{--{{$data['booking']->pickup_time}}--}}
+                                                    {{--</p>--}}
                                                     {{--@if($data['booking']->meet == 1)--}}
                                                     {{--<p style="margin:0;color:#797979">--}}
                                                     {{--<i>Please Greet the Customer</i>--}}
                                                     {{--</p>--}}
                                                     {{--@endif--}}
-                                                    <p style="margin:0">{{$data['booking']->car->name}} {{$data['booking']->car->description}}</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                        colspan="2"
-                                                        style="border-bottom:1px solid #ccc"
-                                                ></td>
-                                            </tr>
+                                                    {{--<p style="margin:0">{{$data['booking']->car->name}} {{$data['booking']->car->description}}</p>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td--}}
+                                                        {{--colspan="2"--}}
+                                                        {{--style="border-bottom:1px solid #ccc"--}}
+                                                {{--></td>--}}
+                                            {{--</tr>--}}
 
-                                            <tr>
-                                                <td style="width:30%;padding:15px 0;">
-                                                    <p style="margin:0">Number of Adult</p>
-                                                    <p style="margin:0">Number of Child</p>
-                                                    <p style="margin:0;color:#fff">Number of Luggage</p>
-                                                    <p style="margin:0;">Number of CarryOn</p>
-                                                </td>
-                                                <td style="width:70%;padding:15px 0;">
-                                                    <p style="margin:0">{{$data['booking']->adult}}</p>
-                                                    <p style="margin:0">
-                                                        {{$data['booking']->child}}
-                                                    </p>
+                                            {{--<tr>--}}
+                                                {{--<td style="width:30%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">Number of Adult</p>--}}
+                                                    {{--<p style="margin:0">Number of Child</p>--}}
+                                                    {{--<p style="margin:0">Number of Luggage</p>--}}
+                                                    {{--<p style="margin:0;">Number of CarryOn</p>--}}
+                                                {{--</td>--}}
+                                                {{--<td style="width:70%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0">{{$data['booking']->adult}}</p>--}}
+                                                    {{--<p style="margin:0">--}}
+                                                        {{--{{$data['booking']->child}}--}}
+                                                    {{--</p>--}}
                                                     {{--@if($data['booking']->meet == 1)--}}
                                                     {{--<p style="margin:0;color:#797979">--}}
                                                     {{--<i>Please Greet the Customer</i>--}}
                                                     {{--</p>--}}
                                                     {{--@endif--}}
-                                                    <p style="margin:0">{{$data['booking']->luggage}}</p>
-                                                    <p style="margin:0">{{$data['booking']->carryon}}</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                        colspan="2"
-                                                        style="border-bottom:1px solid #ccc"
-                                                ></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width:30%;padding:15px 0;">
-                                                    <p style="margin:0;font-weight: bold">Total</p>
-                                                </td>
-                                                <td style="width:70%;padding:15px 0;">
-                                                    <p style="margin:0;font-weight: bold">
-                                                        &#163; {{$data['booking']->price}}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
+                                                    {{--<p style="margin:0">{{$data['booking']->luggage}}</p>--}}
+                                                    {{--<p style="margin:0">{{$data['booking']->carryon}}</p>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td--}}
+                                                        {{--colspan="2"--}}
+                                                        {{--style="border-bottom:1px solid #ccc"--}}
+                                                {{--></td>--}}
+                                            {{--</tr>--}}
+                                            {{--<tr>--}}
+                                                {{--<td style="width:30%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0;font-weight: bold">Total</p>--}}
+                                                {{--</td>--}}
+                                                {{--<td style="width:70%;padding:15px 0;">--}}
+                                                    {{--<p style="margin:0;font-weight: bold">--}}
+                                                        {{--&#163; {{$data['booking']->price}}--}}
+                                                    {{--</p>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                        {{--</table>--}}
+                                    {{--</td>--}}
+                                {{--</tr>--}}
                             </table>
                         </td>
                     </tr>
