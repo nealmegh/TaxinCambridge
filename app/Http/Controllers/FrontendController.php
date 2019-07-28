@@ -218,7 +218,7 @@ class FrontendController extends Controller
 
             $totalPrice = round($meetPrice + $price + $carPrice + $returnPrice, 2);
             $hiddenPrice = round($request->hiddenPrice, 2);
-//dd($totalPrice, $hiddenPrice);
+            //dd($totalPrice, $hiddenPrice);
             if ($totalPrice != $hiddenPrice) {
                 return redirect()->back();
             } else {
@@ -350,6 +350,7 @@ class FrontendController extends Controller
         /** @var TYPE_NAME $data */
         Mail::to($to)->send(new contactForm($data));
 
-        dd('success');
+//        dd('success');
+        return redirect()->route('land');
     }
 }

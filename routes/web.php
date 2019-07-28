@@ -15,7 +15,7 @@ use App\Booking;
 
 
 Route::get('/', 'FrontendController@index')->name('land');
-Route::get('/email', 'FrontendController@index1')->name('land1');
+//Route::get('/email', 'FrontendController@index1')->name('land1');
 Route::get('/terms', 'FrontendController@terms')->name('terms');
 Route::post('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/payment', 'PaymentController@payment')->name('payment');
