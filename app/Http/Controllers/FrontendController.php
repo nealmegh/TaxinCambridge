@@ -200,6 +200,10 @@ class FrontendController extends Controller
                     }
                 }
             }
+            if($car->fair == 500)
+            {
+                $carPrice = round($price*.5, 2);
+            }
             if ($request->return == 1) {
                 $carPrice = $carPrice * 2;
 
@@ -212,9 +216,9 @@ class FrontendController extends Controller
                 $meetPrice = $meetValue;
             }
 
-            $totalPrice = $meetPrice + $price + $carPrice + $returnPrice;
+            $totalPrice = round($meetPrice + $price + $carPrice + $returnPrice, 2);
             $hiddenPrice = round($request->hiddenPrice, 2);
-
+//dd($totalPrice, $hiddenPrice);
             if ($totalPrice != $hiddenPrice) {
                 return redirect()->back();
             } else {

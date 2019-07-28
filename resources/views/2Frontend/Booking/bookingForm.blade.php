@@ -411,7 +411,16 @@
             for(var i=0; i<cars.length; i++)
             {
                 if (car_type == cars[i].id) {
-                    carPrice = parseFloat(cars[i].fair);
+                    if(cars[i].fair == 500)
+                    {
+                        carPrice = parseFloat(price*.5);
+                        // carPrice = carPrice.toFixed(2);
+                    }
+                    else
+                    {
+                        carPrice = parseFloat(cars[i].fair);
+                        // carPrice = carPrice.toFixed(2);
+                    }
                 }
 
             }
@@ -437,11 +446,15 @@
             tp = price + returnPrice + carPrice + meetPrice;
             $("#hiddenPrice").val(function() {
                 tp = parseFloat(tp);
-                tp = tp.toFixed(2)
+                // tp = tp.toFixed(2);
+                tp = Math.round(tp*100)/100;
+                console.log('hi1'+tp);
                 return tp;
             });
             $("#hiddenCarPrice").val(function() {
-                carPrice = carPrice.toFixed(2)
+                // carPrice = carPrice.toFixed(2);
+                carPrice = Math.round(carPrice*100)/100;
+                console.log('hi2'+carPrice);
                 return carPrice;
             });
             var button = document.getElementById('bookingButton');
@@ -575,7 +588,16 @@
             for(var i=0; i<cars.length; i++)
             {
                 if (car_type == cars[i].id) {
-                    carPrice = parseFloat(cars[i].fair);
+                    if(cars[i].fair == 500)
+                    {
+                        carPrice = parseFloat(price*.5);
+                        carPrice = carPrice.toFixed(2);
+                    }
+                    else
+                    {
+                        carPrice = parseFloat(cars[i].fair);
+                        carPrice = carPrice.toFixed(2);
+                    }
                 }
 
             }

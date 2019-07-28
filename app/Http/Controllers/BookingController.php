@@ -60,6 +60,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+
 //        $journey_date = strtotime($request->journey_date);
 //        $journey_date = date('m-d-Y',$journey_date);
 //        $pickup_time = strtotime($request->pickup_time);
@@ -79,6 +80,7 @@ class BookingController extends Controller
         $returnPrice = 0;
         $meetPrice = 0;
         $carPrice = round($car->fair, 2);
+
         $totalPrice = 0;
         $discount = 0;
         $finalPrice = 0;
@@ -113,6 +115,10 @@ class BookingController extends Controller
                 }
             }
         }
+        if($car->fair == 500)
+        {
+            $carPrice = $price*.5;
+        }
         if($request->return == 1)
         {
             $carPrice = $carPrice*2;
@@ -128,6 +134,7 @@ class BookingController extends Controller
         }
 
         $totalPrice = $meetPrice + $price + $carPrice + $returnPrice;
+        $totalPrice = round($totalPrice, 2);
 
         if($request->discount_value>0)
         {
@@ -143,7 +150,8 @@ class BookingController extends Controller
         }
 
         $finalPrice = $totalPrice - $discount;
-
+        $finalPrice = round($finalPrice, 2);
+//        dd('I am here', $finalPrice, $price, $carPrice);
 
         $request->request->add(['price' => $totalPrice]);
 
