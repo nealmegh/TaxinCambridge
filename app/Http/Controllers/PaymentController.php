@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\payment;
+use App\Booking;
 use http\Url;
 use Illuminate\Http\Request;
 use PayPal\Rest\ApiContext;
@@ -10,13 +11,17 @@ use PayPal\Auth\OAuthTokenCredential;
 use Config;
 use PayPal\Api\Agreement;
 use PayPal\Api\Payer;
-use \PayPal\Api\Item;
-use \PayPal\Api\ItemList;
-use \PayPal\Api\Details;
-use \PayPal\Api\Amount;
-use \PayPal\Api\Transaction;
-use \PayPal\Api\RedirectUrls;
-use \PayPal\Api\Payment;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use PayPal\Api\Details;
+use PayPal\Api\Amount;
+use PayPal\Api\Transaction;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Payment;
+use PayPal\Api\WebProfile;
+use PayPal\Api\InputFields;
+
+use PayPal\Api\PaymentExecution;
 use Session;
 use Redirect;
 
@@ -27,11 +32,14 @@ class PaymentController extends Controller
 
     public function __construct()
     {
-        /** PayPal api context **/
+//        /** PayPal api context **/
         $paypal_conf = \Config::get('paypal');
-        $this->_api_context = new ApiContext(new OAuthTokenCredential(
+
+        $this->_api_context = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
                 $paypal_conf['client_id'],
-                $paypal_conf['secret'])
+                $paypal_conf['secret']     // ClientSecret
+            )
         );
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
@@ -176,5 +184,88 @@ class PaymentController extends Controller
     public function destroy(payment $payment)
     {
         //
+    }
+
+
+
+    public function createPaypalPayment(Request $request)
+    {
+
+        $booking = Booking::find($request->booking_id);
+        $payer = new Payer();
+        $payer->setPaymentMethod("paypal");
+        $item1 = new Item();
+        if($booking->from_to == 'loc')
+        {
+            $item1->setName('Booking ID:'.$booking->id.'.')
+                ->setCurrency('GBP')
+                ->setQuantity(1)
+                ->setSku('Booking From '.$booking->location->display_name.' To '.$booking->airport->display_name ) // Similar to `item_number` in Classic API
+                ->setPrice($booking->final_price);
+        }
+        else
+        {
+            $item1->setName('Booking ID:'.$booking->id.'.')
+                ->setCurrency('GBP')
+                ->setQuantity(1)
+                ->setSku('Booking From '.$booking->airport->display_name.' To '.$booking->location->display_name ) // Similar to `item_number` in Classic API
+                ->setPrice($booking->final_price);
+        }
+
+
+        $itemList = new ItemList();
+        $itemList->setItems(array($item1));
+        $details = new Details();
+        $details->setShipping(0)
+            ->setTax(0)
+            ->setSubtotal($booking->final_price);
+        $amount = new Amount();
+        $amount->setCurrency("GBP")
+            ->setTotal($booking->final_price)
+            ->setDetails($details);
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment For Booking No: ".$booking->id)
+            ->setInvoiceNumber(uniqid());
+        $redirectUrls = new RedirectUrls();
+        $redirectUrls->setReturnUrl(route('paymentStatus'))
+            ->setCancelUrl(route('paymentStatus'));
+        // Add NO SHIPPING OPTION
+        $inputFields = new InputFields();
+        $inputFields->setNoShipping(1);
+        $webProfile = new WebProfile();
+        $webProfile->setName($booking->user->name . uniqid())->setInputFields($inputFields);
+        $webProfileId = $webProfile->create($this->_api_context)->getId();
+        $payment = new Payment();
+        $payment->setExperienceProfileId($webProfileId); // no shipping
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions(array($transaction));
+        try {
+            $payment->create($this->_api_context);
+        } catch (Exception $ex) {
+            echo $ex;
+            exit(1);
+        }
+        return $payment;
+    }
+
+    public function executePaypalPayment(Request $request)
+    {
+
+        $paymentId = $request->paymentID;
+        $payment = Payment::get($paymentId, $this->_api_context);
+        $execution = new PaymentExecution();
+        $execution->setPayerId($request->payerID);
+
+        try {
+            $result = $payment->execute($execution, $this->_api_context);
+        } catch (Exception $ex) {
+            echo $ex;
+            exit(1);
+        }
+    return $result;
     }
 }

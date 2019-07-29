@@ -19,6 +19,8 @@ Route::get('/', 'FrontendController@index')->name('land');
 Route::get('/terms', 'FrontendController@terms')->name('terms');
 Route::post('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/payment', 'PaymentController@payment')->name('payment');
+//Route::get('/paymentcheck', 'PaymentController@paymentCheck');
+
 Route::post('/payment/add-funds/paypal', 'PaymentController@payWithpaypal')->name('paypalPayment');
 Route::get('/payment-status', 'UserTransactionController@paymentStatus')->name('paymentStatus');
 Route::POST('/cash-payment', 'UserTransactionController@cashPayment')->name('cashPayment');

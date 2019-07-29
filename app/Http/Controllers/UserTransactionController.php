@@ -18,8 +18,10 @@ class UserTransactionController extends Controller
 
     public function paymentStatus(Request $request)
     {
-        $paymentId = $request->session()->get('paypal_payment_id');
-        $bookingId = $request->session()->get('booking_id');
+        $paymentId = $request->get('paymentId');
+        $bookingId = $request->get('booking_id');
+        $type = $request->get('type');
+
         $booking = Booking::find($bookingId);
         if($booking->final_price != null)
         {
@@ -40,11 +42,14 @@ class UserTransactionController extends Controller
         $booking->confirm = 1 ;
         $booking->user_transaction_id = $userTransaction->id;
         $booking->save();
-
-//        $request->session()->flash('message', 'This is a message!');
-//        $request->session()->flash('alert-class', 'alert-success');
-//        return redirect()->route('userProfile')->with('message', 'Payment Successful');
-        return view('Frontend.Profile.paymentSuccess');
+        if($type == 'admin')
+        {
+            return redirect()->route('bookings');
+        }
+        else
+        {
+            return view('Frontend.Profile.paymentSuccess');
+        }
 
     }
 
