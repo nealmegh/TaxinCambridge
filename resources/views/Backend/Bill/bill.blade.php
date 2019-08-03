@@ -89,7 +89,7 @@
                                                 </a>
                                                 <!--||-->
 
-                                            <!--<a title="Generate Bill" class="btn btn-success" onclick="return confirm('Are you sure?')" href="{{route('bill.generate', $bill->id)}}" class="btn btn-sm btn-success">-->
+{{--                                            <!--<a title="Generate Bill" class="btn btn-success" onclick="return confirm('Are you sure?')" href="{{route('bill.generate', $bill->id)}}" class="btn btn-sm btn-success">-->--}}
                                                 <!--    <i class="fa fa-file-pdf-o"></i>-->
                                                 <!--</a>-->
 

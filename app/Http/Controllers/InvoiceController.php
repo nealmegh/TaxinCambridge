@@ -90,6 +90,7 @@ class InvoiceController extends Controller
         {
             $invoice = Invoice::find($invoiceID);
             $total_bill += $invoice->total_amount;
+            $total_commission += ($invoice->total_amount*$invoice->booking->driver->commission)/100;
             $invoice->bill_id = $bill->id;
             $invoice->status = 1;
             $invoice->save();

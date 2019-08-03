@@ -121,22 +121,22 @@
                         <td>{{$invoice->booking_from}}<br>
                             {{$invoice->booking_to}}</td>
                         <td>{{$invoice->payment_type}}</td>
-                        <td>20  %</td>
+                        <td>{{$invoice->booking->driver->commission.'%'}}</td>
                         @if($invoice->payment_type == 'Cash')
                              <td class="text-right">-{{$invoice->total_amount}}<span class="currency">£</span></td>
                         @else
                             <td class="text-right">{{$invoice->total_amount}}<span class="currency">£</span></td>
                         @endif
                         @if($invoice->payment_type == 'Cash')
-                            <td class="text-right">-{{$invoice->total_amount-($invoice->total_amount*.2)}}<span class="currency">£</span></td>
-                            <?php $total_commission = $total_commission + $invoice->total_amount*.2;
-                            $total_payable = $total_payable - ($invoice->total_amount-($invoice->total_amount*.2));
+                            <td class="text-right">-{{$invoice->total_amount-($invoice->total_amount*$invoice->booking->driver->commission)/100}}<span class="currency">£</span></td>
+                            <?php $total_commission = $total_commission + ($invoice->total_amount*$invoice->booking->driver->commission)/100;
+                            $total_payable = $total_payable - ($invoice->total_amount-$total_commission);
 
                             ?>
                         @else
-                            <td class="text-right">{{$invoice->total_amount-($invoice->total_amount*.2)}}<span class="currency">£</span></td>
-                            <?php $total_commission = $total_commission + $invoice->total_amount*.2;
-                            $total_payable = $total_payable + ($invoice->total_amount-($invoice->total_amount*.2));
+                            <td class="text-right">{{$invoice->total_amount-($invoice->total_amount*$invoice->booking->driver->commission)/100}}<span class="currency">£</span></td>
+                            <?php $total_commission = $total_commission +($invoice->total_amount*$invoice->booking->driver->commission)/100;
+                            $total_payable = $total_payable + ($invoice->total_amount - $total_commission);
                             ?>
                         @endif
                     </tr>

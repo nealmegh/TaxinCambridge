@@ -77,6 +77,7 @@ class BillController extends Controller
     {
         $bill = Bill::find($bill);
         $bill->status = 1;
+        $bill->save();
         return redirect()->route('bills');
     }
 
