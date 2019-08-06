@@ -111,7 +111,7 @@
                             </div>
                             <div class="form-group-new" id="rDA" style="display: none">
                                 <label for="return_dropoff_address">Full Return Drop off Address (Post Code must be same with Selected Address) *</label>
-                                <input id="return_dropoff_address" class="inputField" type="text" name="dropoff_address" placeholder="Specify Full Drop off Address" value="{{old('return_dropoff_address')}}" disabled>
+                                <input id="return_dropoff_address" class="inputField" type="text" name="return_dropoff_address" placeholder="Specify Full Drop off Address" value="{{old('return_dropoff_address')}}" disabled>
                             </div>
                             <div class="form-group-new">
                                 <div class="row" id="rDate" style="display: none">
@@ -171,11 +171,12 @@
                                 </div>
                             </div>
                             <div class="field-group-new">
-                                <label for="email">Meet & Greet (£{{$siteSettings[0]->value}})</label>
-                                <select id="meet" name="meet">
-                                    <option value=1>Yes</option>
-                                    <option value=0 selected>No</option>
+                                <label for="meet">Meet & Greet (£{{$siteSettings[0]->value}})</label>
+                                <select id="meet" name="meet1" disabled="disabled" >
+                                    <option value=1 selected>Yes</option>
+                                    <option value=0 >No</option>
                                 </select>
+                                <input class=""  name="meet"  value='1' type="hidden">
                             </div>
                             <div class="field-group-new">
                                 <label for="booking_details">Additional Instruction (if any)</label>
@@ -292,13 +293,13 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12">
-                            <input id="policy" type="checkbox" name="terms" value="" style="width: auto;box-shadow: none; float: left;display: inline-block;
+                            <input id="policy" type="checkbox" name="terms" value="1" style="width: auto;box-shadow: none; float: left;display: inline-block;
 "><span style="
     display: inline-block;
     margin-top: 10px;
 ">Click to accept <a style="color: #0b97c4" target="_blank" href="{{route('terms')}}">terms & conditions</a>.</span> </br>
                         </div>
-                        <input id="hiddenPrice" type="hidden" name="hiddenPrice" value="{{round($price, 2)}}">
+                        <input id="hiddenPrice" type="hidden" name="hiddenPrice" value="{{round($price+$siteSettings[0]->value, 2)}}">
                         <input id="hiddenReturnPrice" type="hidden" name="hiddenReturnPrice" value="{{round($returnPrice, 2)}}">
                         <input id="hiddenCarPrice" type="hidden" name="carPrice" value="0">
                         <input  type="hidden" name="location_id" value="{{$location}}">
@@ -309,13 +310,13 @@
 
                         {{--@if(Auth::check())--}}
 
-                        <div class="" style="float: right;text-align:center;width:100%">
+                        <div class="" id="" style="float: right;text-align:center;width:100%">
                             {{--<div class="boxed" style="border: 1px solid green ;">--}}
                             {{--{{'Book Now with Total Fair £'.round($price, 2)}}--}}
                             {{--</div>--}}
                             {{--<button style="margin-top: 1px" id="bookingButton" class="btn confirmBtn1" type="submit" disabled="disabled"> {{'Book Now with Total Fair £'.round($price, 2)}} </button>--}}
-                            <h4 id="bookingButton">{{'Total Fair £'.round($price, 2)}}</h4>
-                            <input style="width:160px" id="bookButton" class="btn sudmitBtn shadow" type="submit" value="BOOK NOW">
+                            <h4 id="bookingButton">{{'Total Fair £'.round($price+$siteSettings[0]->value, 2)}}</h4>
+                            <input style="width:160px" id="bookButton" class="btn submit Btn shadow" type="submit" value="BOOK NOW" disabled>
                             {{--<button style="margin-top: 1px" name="type" value="paypal" id="bookingButton2" class="btn confirmBtn" type="submit" disabled="disabled">{{'Pay By Paypal'}}</button>--}}
                         </div>
                         {{--@else--}}
@@ -360,13 +361,14 @@
     <script>
 
         $('#policy').on('click', function() {
-            if(document.getElementById('bookingButton').disabled){
+            console.log('hello');
+            if(document.getElementById('bookButton').disabled){
 
-                $("#bookingButton").prop('disabled', false);
+                $("#bookButton").prop('disabled', false);
                 // $("#bookingButton2").prop('disabled', false);
             }
             else {
-                $("#bookingButton").prop('disabled', true);
+                $("#bookButton").prop('disabled', true);
                 // $("#bookingButton2").prop('disabled', true);
             }
         });
@@ -591,12 +593,12 @@
                     if(cars[i].fair == 500)
                     {
                         carPrice = parseFloat(price*.5);
-                        carPrice = carPrice.toFixed(2);
+                        carPrice = parseFloat(carPrice).toFixed(2);
                     }
                     else
                     {
                         carPrice = parseFloat(cars[i].fair);
-                        carPrice = carPrice.toFixed(2);
+                        carPrice = parseFloat(carPrice).toFixed(2);
                     }
                 }
 
@@ -608,7 +610,7 @@
             }
             else
             {
-                carPrice = carPrice+carPrice;
+                carPrice = Number(carPrice)+Number(carPrice);
             }
             // alert(returnPrice);
             var g = document.getElementById("meet");
@@ -621,23 +623,23 @@
                 meetPrice = parseFloat(meetValue);
             }
             // alert(meetPrice);
-            console.log(price, returnPrice, carPrice, meetPrice);
+            console.log(price, carPrice, meetPrice, returnPrice, 'I am here');
             tp = Number(price) + Number(returnPrice) + Number(carPrice)  + Number(meetPrice);
-            console.log(tp);
+            console.log('TP not working '+tp);
             tp = parseFloat(tp);
             $("#hiddenPrice").val(function() {
-                tp = tp.toFixed(2);
+                tp = parseFloat(tp).toFixed(2);
                 return tp;
             });
             $("#hiddenCarPrice").val(function() {
-                carPrice = carPrice.toFixed(2);
+                carPrice = parseFloat(carPrice).toFixed(2);
                 return carPrice;
             });
 
             var button = document.getElementById('bookingButton');
 
             button.innerHTML = 'Book Now with Total Fair £'+  tp;
-            console.log(price+returnPrice);
+            console.log('hi'+price+returnPrice);
         });
 
         $('#pickup_time').datetimepicker({

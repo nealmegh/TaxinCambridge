@@ -467,10 +467,10 @@
 
                 <div class="col-md-6">
                     <h4 class="left h4-bottom">Saloon car</h4>
-                    <p class="left">We have range of saloon cars in our fleet. All of our saloon cars allow 4 passengers 2 luggages and 2 carry-ons. If you need more information about our car capacity, do not hesitate to contact us. </p>
+                    <p class="left">We have a range of state-of-the art saloon cars in our fleet. All of our saloon cars allow 4 passengers, maximum 23kg 2pcs luggage and 8kg 2pcs cabin bags or 30kg 1pcs luggage and 8kg 2pcs cabin bags or 8kg 4pcs cabin bags only. If you need more information about our car capacity, do not hesitate to contact us.</p>
 
                     <div class="left btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -489,10 +489,10 @@
 
                 <div class="col-md-6">
                     <h4 class="left h4-bottom">Estate car</h4>
-                    <p class="left">We have range of Executive cars in our fleet. All of our Executive cars allow 4 passengers 2 luggages and 3 carry-ons. If you need more information about our car capacity, do not hesitate to contact us. </p>
+                    <p class="left">We have a range of spacious and modern estate/station wagon cars in our fleet. All of our Estate cars allow 4 passengers and maximum 23kg 3pcs luggage and 8kg 3pcs cabin bags or 30kg 2pcs luggage and 8kg 2pcs cabin bags. If you need more information about our car capacity, do not hesitate to contact us.</p>
 
                     <div class="left btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -511,10 +511,10 @@
 
                 <div class="col-md-6">
                     <h4 class="left h4-bottom">Executive car</h4>
-                    <p class="left">We have range of 7 Seaters in our fleet. All of our saloon cars allow 7 passengers 4 luggages and 3 carry-ons. If you need more information about our car capacity, do not hesitate to contact us.</p>
+                    <p class="left">We are committed to provide airport transfer services with our luxury Executive cars. All of our Executive cars allow up to 4 passengers and maximum 23kg 2pcs luggage and 8kg 2pcs cabin bags or 30kg 1pcs luggage and 8kg 2pcs cabin bags or 8kg 4pcs cabin bags only. If you need more information about our car capacity, do not hesitate to contact us.</p>
 
                     <div class="left btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -532,11 +532,11 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h4 class="left h4-bottom">Large 8 Seaters</h4>
-                    <p class="left">We have range of 7 Seaters in our fleet. All of our saloon cars allow 7 passengers 4 luggages and 3 carry-ons. If you need more information about our car capacity, do not hesitate to contact us.</p>
+                    <h4 class="left h4-bottom">Large Multi-seater</h4>
+                    <p class="left">If you are in a group or have extra baggage, larger muti-seater is perfect for you. All of our Multi-seater vehicles allow up to 8 passengers and maximum 23kg 5pcs luggage and 8kg 4pcs cabin bags or 30kg 3pcs luggage and 8kg 5pcs cabin bags only. If you need more information about our car capacity, do not hesitate to contact us.</p>
 
                     <div class="left btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -556,8 +556,8 @@
             <!--=============== COLUMN-1 ==================-->
             <div class="col-md-4 col-sm-4 price-fixed price-res-bottom">
                 <div class="packages-bg">
-                    <h4 class="center">Stanstead Airport</h4>
-                    <p class="center pricing-tag ls">From £50 oneway</p>
+                    <h4 class="center">Stansted Airport</h4>
+                    <p class="center pricing-tag ls">From £49 0ne way</p>
                     <div class="price-list-bottom">
                         <p class="center ls">Book online or by phone</p>
                         <p class="center ls">24 hours drop off service</p>
@@ -565,7 +565,7 @@
 
                     </div>
                     <div class="center btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -576,7 +576,7 @@
             <div class="col-md-4 col-sm-4 price-fixed price-res-bottom">
                 <div class="packages-bg">
                     <h4 class="center">Heathrow Airport</h4>
-                    <p class="center pricing-tag ls">From £120 Oneway</p>
+                    <p class="center pricing-tag ls">From £99 One way</p>
                     <div class="price-list-bottom">
                         <p class="center ls">Book online or by phone</p>
                         <p class="center ls">24 hours drop off service</p>
@@ -584,7 +584,7 @@
 
                     </div>
                     <div class="center btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -594,8 +594,8 @@
             <!--=============== COLUMN-3 ==================-->
             <div class="col-md-4 col-sm-4 price-fixed price-res-bottom">
                 <div class="packages-bg">
-                    <h4 class="center">London City</h4>
-                    <p class="center pricing-tag ls">From £120 Oneway</p>
+                    <h4 class="center">London City Airport</h4>
+                    <p class="center pricing-tag ls">From £83 One way</p>
                     <div class="price-list-bottom">
                         <p class="center ls">Book online or by phone</p>
                         <p class="center ls">24 hours drop off service</p>
@@ -603,7 +603,7 @@
 
                     </div>
                     <div class="center btn-top-1">
-                        <a href="#">
+                        <a href="#book">
                             <div class="btn-1">book now</div>
                         </a>
                     </div>
@@ -691,22 +691,22 @@
 
 <!--================================= TAXI AVAILABLE 24/7 SERVICE  START =============================================-->
 
-<div class="container-fluid available-bgimage bgimage-property available-section-space">
-    <div class="container">
-        <div class="col-md-12 column-center no-padding white-text">
-            <h2 class="center bgimage-head-bottom">taxi available all days</h2>
-            <div class="col-md-8 column-center no-padding">
-                <p class="center ls">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit</p>
-            </div>
-            <div class="center btn-top">
-                <a href="#">
-                    <div class="btn-1 btn-ant">book now</div>
-                </a>
-            </div>
-        </div>
-    </div>
+{{--<div class="container-fluid available-bgimage bgimage-property available-section-space">--}}
+    {{--<div class="container">--}}
+        {{--<div class="col-md-12 column-center no-padding white-text">--}}
+            {{--<h2 class="center bgimage-head-bottom">taxi available all days</h2>--}}
+            {{--<div class="col-md-8 column-center no-padding">--}}
+                {{--<p class="center ls">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit</p>--}}
+            {{--</div>--}}
+            {{--<div class="center btn-top">--}}
+                {{--<a href="#">--}}
+                    {{--<div class="btn-1 btn-ant">book now</div>--}}
+                {{--</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-</div>
+{{--</div>--}}
 <!--================================= TAXI AVAILABLE 24/7 SERVICE  END =============================================-->
 
 <!--================================= MOBILE APP START =============================================-->
@@ -805,7 +805,7 @@
                     <h4 class="center plans-fs distab-cell-middle plans-br plans-pad"><a href="#">London City Drop-off</a>
                     </h4>
 
-                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£70 </p>
+                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£83 </p>
                 </div>
 
                 <!--=============== ROW-2 ==================-->
@@ -813,7 +813,7 @@
                     <h4 class="center plans-fs distab-cell-middle plans-br plans-pad"><a href="#">London Heathrow Pickup</a>
                     </h4>
 
-                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£120 </p>
+                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£110 </p>
                 </div>
 
                 <!--=============== ROW-3 ==================-->
@@ -821,7 +821,14 @@
                     <h4 class="center plans-fs distab-cell-middle plans-br plans-pad"><a href="#">London Gatwick Drop-off</a>
                     </h4>
 
-                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£120 </p>
+                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£125 </p>
+                </div>
+                <!--=============== ROW-3.1 ==================-->
+                <div class="distab plans-bg-2">
+                    <h4 class="center plans-fs distab-cell-middle plans-br plans-pad"><a href="#">London EuroStar Pick Up</a>
+                    </h4>
+
+                    <p class="center plans-fs plans-price-fs ls distab-cell-middle plans-pad">£107 </p>
                 </div>
 
                 <!--=============== ROW-4 ==================-->

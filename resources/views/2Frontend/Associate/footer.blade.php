@@ -90,6 +90,6 @@
 
         </div>
         <div class="footer-br footer-br-bottom"></div>
-        <p class="center ls">&copy; 2019, All Rights Reserved, owned by Taxi In Cambridge</p>
+        <p class="center ls">© 2019, All Rights Reserved, owned by Samif Ltd, Reg no 08926867</p>
     </div>
 </section>
