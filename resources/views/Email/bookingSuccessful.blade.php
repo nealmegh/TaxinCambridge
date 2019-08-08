@@ -218,14 +218,14 @@
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Pickup</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->location->display_name.')'}}
+                                                    {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->invoice->booking_from.')'}}
 
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Destination</td>
                                                 <td style="width:70%;padding:5px 0;">
-                                                    {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->airport->display_name.')'}}
+                                                    {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->invoice->booking_to.')'}}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -238,6 +238,23 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                            @if($data['booking']->return == 1)
+                                                <tr>
+                                                    <td style="width:30%;padding:5px 0;"> Return Pickup</td>
+                                                    <td style="width:70%;padding:5px 0;">
+                                                        {{$data['booking']->return_pickup_address.' '}}   {{'('.$data['booking']->invoice->booking_to.')'}}
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:30%;padding:5px 0;">Return Destination</td>
+                                                    <td style="width:70%;padding:5px 0;">
+                                                        {{$data['booking']->return_dropoff_address.' '}}   {{'('.$data['booking']->invoice->booking_from.')'}}
+                                                    </td>
+                                                </tr>
+
+                                            @endif
+
                                         </table>
                                     </td>
                                 </tr>

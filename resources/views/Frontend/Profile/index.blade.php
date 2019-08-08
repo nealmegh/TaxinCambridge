@@ -55,14 +55,18 @@
                                 <tr>
                                     <td>{{$booking->id}}</td>
                                     <td>{{date('d-m-Y', strtotime($booking->journey_date))}}</td>
-                                    @if($booking->form_to == 'loc')
-                                        <td>{{$booking->location->display_name}}</td>
-                                        <td>{{$booking->airport->display_name}}</td>
+                                    @if($booking->invoice != null)
+                                        <td>{{$booking->invoice->booking_from}}</td>
+                                        <td>{{$booking->invoice->booking_to}}</td>
                                     @else
-                                        <td>{{$booking->airport->display_name}}</td>
-                                        <td>{{$booking->location->display_name}}</td>
+                                        @if($booking->form_to == 'loc')
+                                            <td>{{$booking->location->display_name}}</td>
+                                            <td>{{$booking->airport->display_name}}</td>
+                                        @else
+                                            <td>{{$booking->airport->display_name}}</td>
+                                            <td>{{$booking->location->display_name}}</td>
+                                        @endif
                                     @endif
-
                                     <td>{{$booking->price}}</td>
                                     @if($booking->driver == null)
                                         <td>

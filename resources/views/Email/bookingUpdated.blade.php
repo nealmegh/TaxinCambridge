@@ -196,7 +196,7 @@
                                                         style="border-bottom:1px solid #ccc"
                                                 ></td>
                                             </tr>
-                                            @if($data['booking']->from_to == 'loc')
+{{--                                            @if($data['booking']->from_to == 'loc')--}}
                                                 <tr>
                                                     <td style="width:30%;padding:15px 0;">
                                                         <p style="margin:0">Pickup</p>
@@ -205,10 +205,10 @@
                                                     </td>
                                                     <td style="width:70%;padding:15px 0;">
                                                         <p style="margin:0">
-                                                            {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->location->display_name.')'}}
+                                                            {{$data['booking']->pickup_address.' '}}   {{'('.$data['booking']->invoice->booking_from.')'}}
                                                         </p>
                                                         <p style="margin:0">
-                                                            {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->airport->display_name.')'}}
+                                                            {{$data['booking']->dropoff_address.' '}}   {{'('.$data['booking']->invoice->booking_to.')'}}
                                                         </p>
                                                         @if($data['booking']->return == 1)
                                                             <p style="margin:0">Yes</p>
@@ -216,31 +216,40 @@
                                                             <p style="margin:0">No</p>
                                                         @endif
 
-                                                    </td>
-                                                </tr>
-                                            @else
-                                                <tr>
-                                                    <td style="width:30%;padding:15px 0;">
-                                                        <p style="margin:0">Pickup</p>
-                                                        <p style="margin:0">Destination</p>
-                                                        <p style="margin:0">Return</p>
-                                                    </td>
-                                                    <td style="width:70%;padding:15px 0;">
-                                                        <p style="margin:0">
-                                                            {{$data['booking']->pickup_address.' '}}  {{ '('.$data['booking']->airport->display_name.')'}}
-                                                        </p>
-                                                        <p style="margin:0">
-                                                            {{$data['booking']->dropoff_address.' '}}  {{'('.$data['booking']->location->display_name.')'}}
-                                                        </p>
                                                         @if($data['booking']->return == 1)
-                                                            <p style="margin:0">Yes</p>
-                                                        @else
-                                                            <p style="margin:0">No</p>
+                                                            <p style="margin:0">
+                                                                {{$data['booking']->return_pickup_address.' '}}   {{'('.$data['booking']->invoice->booking_to.')'}}
+                                                            </p>
+                                                            <p style="margin:0">
+                                                                {{$data['booking']->return_dropoff_address.' '}}   {{'('.$data['booking']->invoice->booking_from.')'}}
+                                                            </p>
                                                         @endif
 
                                                     </td>
                                                 </tr>
-                                            @endif
+                                            {{--@else--}}
+                                                {{--<tr>--}}
+                                                    {{--<td style="width:30%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">Pickup</p>--}}
+                                                        {{--<p style="margin:0">Destination</p>--}}
+                                                        {{--<p style="margin:0">Return</p>--}}
+                                                    {{--</td>--}}
+                                                    {{--<td style="width:70%;padding:15px 0;">--}}
+                                                        {{--<p style="margin:0">--}}
+                                                            {{--{{$data['booking']->pickup_address.' '}}  {{ '('.$data['booking']->airport->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--<p style="margin:0">--}}
+                                                            {{--{{$data['booking']->dropoff_address.' '}}  {{'('.$data['booking']->location->display_name.')'}}--}}
+                                                        {{--</p>--}}
+                                                        {{--@if($data['booking']->return == 1)--}}
+                                                            {{--<p style="margin:0">Yes</p>--}}
+                                                        {{--@else--}}
+                                                            {{--<p style="margin:0">No</p>--}}
+                                                        {{--@endif--}}
+
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endif--}}
                                             @if($data['booking']->driver_id != null)
                                             <tr>
                                             <td
