@@ -313,10 +313,31 @@
                                                     {{$data['booking']->pickup_time}}
                                                 </td>
                                             </tr>
+                                            @if($data['booking']->return == 1)
+                                                <tr>
+                                                    <td style="width:30%;padding:5px 0;">Return Pick Up Date</td>
+                                                    <td style="width:70%;padding:5px 0;">
+                                                        {{date('d-m-Y',strtotime($data['booking']->return_date))}}
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:30%;padding:5px 0;">Return Pick Up Time</td>
+                                                    <td style="width:70%;padding:5px 0;">
+                                                        {{$data['booking']->return_time}}
+                                                    </td>
+                                                </tr>
+                                            @endif
                                             <tr>
                                                 <td style="width:30%;padding:5px 0;">Vehicle</td>
                                                 <td style="width:70%;padding:5px 0;">
                                                     {{$data['booking']->car->name}} {{$data['booking']->car->description}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:30%;padding:5px 0;">Additional Info</td>
+                                                <td style="width:70%;padding:5px 0;">
+                                                    {{$data['booking']->add_info}}
                                                 </td>
                                             </tr>
                                         </table>

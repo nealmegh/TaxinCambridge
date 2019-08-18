@@ -293,6 +293,10 @@
                                                 <td style="width:30%;padding:15px 0;">
                                                     <p style="margin:0">Pick Up Date</p>
                                                     <p style="margin:0">Pick Up Time</p>
+                                                    @if($data['booking']->return == 1)
+                                                        <p style="margin:0">Return Pick Up Date</p>
+                                                        <p style="margin:0">Return Pick Up Time</p>
+                                                    @endif
                                                     <p style="margin:0;color:#fff">Blank</p>
                                                     <p style="margin:0;">Vehicle</p>
                                                 </td>
@@ -301,6 +305,14 @@
                                                     <p style="margin:0">
                                                         {{$data['booking']->pickup_time}}
                                                     </p>
+                                                    @if($data['booking']->return == 1)
+                                                    <p style="margin:0">
+                                                        {{date('d-m-Y',strtotime($data['booking']->return_date))}}
+                                                    </p>
+                                                    <p style="margin:0">
+                                                        {{$data['booking']->return_time}}
+                                                    </p>
+                                                    @endif
                                                     {{--@if($data['booking']->meet == 1)--}}
                                                     {{--<p style="margin:0;color:#797979">--}}
                                                     {{--<i>Please Greet the Customer</i>--}}
@@ -335,7 +347,18 @@
                                                     <p style="margin:0">{{$data['booking']->luggage}}</p>
                                                     <p style="margin:0">{{$data['booking']->carryon}}</p>
                                                 </td>
+                                                <td style="width:30%;padding:15px 0;">
+                                                    <p style="margin:0;font-weight: bold">Additional Info</p>
+                                                </td>
+                                                <td style="width:70%;padding:15px 0;">
+                                                    <p style="margin:0;font-weight: bold">
+                                                        {{$data['booking']->add_info}}
+                                                    </p>
+                                                </td>
                                             </tr>
+
+
+
                                             <tr>
                                                 <td
                                                         colspan="2"

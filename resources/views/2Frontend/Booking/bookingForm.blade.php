@@ -88,12 +88,12 @@
                             <div class="form-group-new">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="flight_number">Flight Number *</label>
+                                        <label for="flight_number">Flight Number </label>
                                         <input id="flight_number" class="inputField" type="text" name="flight_number" placeholder="Eg: BA001" value="{{old('flight_number')}}">
 
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="flight_origin">Flight/Train Origin *</label>
+                                        <label for="flight_origin">Flight/Train Origin </label>
                                         <input id="flight_origin" class="form-control col-md-7 col-xs-12" name="flight_origin" placeholder="Eg: Milan" required="required" type="text" value="{{old('flight_origin')}}">
                                     </div>
                                 </div>
@@ -131,12 +131,12 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="return_flight_number">Flight Number *</label>
+                                        <label for="return_flight_number">Flight Number </label>
                                         <input id="return_flight_number" class="inputField" type="text" name="return_flight_number" placeholder="Eg: BA001" value="{{old('return_flight_number')}}">
 
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="return_flight_origin">Flight/Train Origin *</label>
+                                        <label for="return_flight_origin">Flight/Train Origin </label>
                                         <input id="return_flight_origin" class="form-control col-md-7 col-xs-12" name="return_flight_origin" placeholder="Eg: Milan" required="required" type="text" value="{{old('return_flight_origin')}}">
                                     </div>
 
